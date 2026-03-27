@@ -12,6 +12,13 @@ const getHeaders = () => {
   return headers;
 };
 
+const getMultipartHeaders = () => {
+  const token = localStorage.getItem('accessToken');
+  const headers = {};
+  if (token) headers.Authorization = `Bearer ${token}`;
+  return headers;
+};
+
 const api = {
   post: async (url, data) => {
     const headers = getHeaders();
@@ -59,6 +66,20 @@ const api = {
     const response = await fetch(BASE_URL + url, {
       method: "DELETE",
       headers,
+      credentials: 'include',
+    });
+    const json = await response.json();
+    if (!response.ok) {
+      throw { response: { data: json } };
+    }
+    return { data: json };
+  },
+  upload: async (url, formData) => {
+    const headers = getMultipartHeaders();
+    const response = await fetch(BASE_URL + url, {
+      method: "POST",
+      headers,
+      body: formData,
       credentials: 'include',
     });
     const json = await response.json();

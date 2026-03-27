@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { DashboardLayout } from "../components/layout/DashboardLayout.jsx";
 import { ExtensionForm } from "../components/extensions/ExtensionForm.jsx";
 import { ExtensionTable } from "../components/extensions/ExtensionTable.jsx";
+import { RagContextPanel } from "../components/extensions/RagContextPanel.jsx";
 import api from "../api/api.js";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
@@ -312,6 +313,9 @@ export function ExtensionsPage() {
             registeringId={registeringId}
           />
         )}
+
+        {/* ── RAG CONTEXT ─────────────────────────────────────────────────── */}
+        <RagContextPanel />
       </div>
     </DashboardLayout>
   );
