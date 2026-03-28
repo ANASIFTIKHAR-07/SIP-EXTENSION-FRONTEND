@@ -1,18 +1,31 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-:root {
-  color-scheme: dark;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  min-width: 320px;
-  background-color: rgb(248 250 252); /* slate-50 */
-  color: rgb(15 23 42); /* slate-900 */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  /* Soft transition for theme toggling */
+  body {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+
+  /* Light mode defaults */
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Dark mode defaults */
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
 }
 
 #root {
