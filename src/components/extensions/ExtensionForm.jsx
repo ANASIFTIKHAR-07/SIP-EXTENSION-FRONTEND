@@ -10,15 +10,15 @@ const INITIAL_VALUES = {
 
 const InputField = ({ label, required, hint, ...props }) => (
   <label className="flex flex-col gap-1.5">
-    <span className="text-[10px] font-semibold text-stone-500 uppercase tracking-[0.1em]">
-      {label}{required && <span className="text-green-600 ml-0.5">*</span>}
+    <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+      {label}{required && <span className="text-emerald-500 ml-0.5">*</span>}
     </span>
     <input
       {...props}
       required={required}
-      className="rounded-md border border-stone-200 bg-white px-3 py-2.5 text-sm text-stone-800 placeholder-stone-300 outline-none transition-all focus:border-green-500 focus:ring-2 focus:ring-green-500/15 hover:border-stone-300 shadow-sm"
+      className="rounded-xl border-0 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-inset focus:ring-emerald-500 transition-all outline-none"
     />
-    {hint && <span className="text-[10px] text-stone-400">{hint}</span>}
+    {hint && <span className="text-[11px] text-slate-400">{hint}</span>}
   </label>
 );
 
@@ -42,26 +42,23 @@ export function ExtensionForm({ onSubmit, onCancel, loading }) {
   };
 
   return (
-    <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-hidden">
+    <div className="rounded-2xl border border-slate-100/60 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-900/5 overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-3 border-b border-stone-100 bg-white px-6 py-4">
-        <div
-          style={{ background: "linear-gradient(135deg, #16a34a, #15803d)" }}
-          className="flex h-7 w-7 items-center justify-center rounded-md shadow-sm"
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <div className="flex items-center gap-3 border-b border-slate-100/60 bg-white px-6 py-4">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-sm">
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
             <path d="M6 1.5L10.5 4.5V8.5L6 11L1.5 8.5V4.5L6 1.5Z" stroke="white" strokeWidth="1.2" strokeLinejoin="round"/>
             <circle cx="6" cy="6" r="1.5" fill="white"/>
           </svg>
         </div>
         <div>
-          <h2 className="text-sm font-semibold text-stone-800">New SIP Extension</h2>
-          <p className="text-[11px] text-stone-400 mt-0.5">Register a new extension to your workspace</p>
+          <h2 className="text-[15px] font-bold text-slate-900 tracking-tight">New SIP Extension</h2>
+          <p className="text-xs text-slate-500 mt-0.5">Register a new extension to your workspace</p>
         </div>
         <button
           type="button"
           onClick={() => { setValues(INITIAL_VALUES); onCancel?.(); }}
-          className="ml-auto rounded-md p-1.5 text-stone-400 hover:bg-stone-100 hover:text-stone-600 transition-colors"
+          className="ml-auto rounded-xl p-2 text-slate-400 hover:bg-slate-50 hover:text-slate-700 transition-all"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M2 2L12 12M12 2L2 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -71,13 +68,13 @@ export function ExtensionForm({ onSubmit, onCancel, loading }) {
 
       <form className="p-6" onSubmit={handleSubmit}>
         {/* Required fields */}
-        <div className="mb-5">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="h-px flex-1 bg-stone-100" />
-            <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-stone-400 px-1">Required</p>
-            <div className="h-px flex-1 bg-stone-100" />
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-px flex-1 bg-slate-100" />
+            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 px-2">Required Fields</p>
+            <div className="h-px flex-1 bg-slate-100" />
           </div>
-          <div className="grid gap-3.5 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             <InputField
               label="Extension"
               name="extension"
@@ -114,23 +111,22 @@ export function ExtensionForm({ onSubmit, onCancel, loading }) {
         </div>
 
         {/* Actions */}
-        <div className="flex justify-end gap-2.5 pt-4 border-t border-stone-100">
+        <div className="flex justify-end gap-3 pt-5 border-t border-slate-100/60">
           <button
             type="button"
             onClick={() => { setValues(INITIAL_VALUES); onCancel?.(); }}
-            className="rounded-md border border-stone-200 bg-white px-4 py-2 text-xs font-semibold text-stone-600 transition hover:bg-stone-50 hover:border-stone-300 hover:text-stone-800 shadow-sm"
+            className="rounded-xl border-0 ring-1 ring-inset ring-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-slate-900 shadow-sm"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            style={{ background: loading ? undefined : "linear-gradient(135deg, #16a34a, #15803d)" }}
-            className="rounded-md px-5 py-2 text-xs font-bold text-white shadow-sm transition disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-green-300 hover:opacity-90"
+            className="rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-emerald-500/20 transition-all hover:shadow-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <svg className="animate-spin" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <svg className="animate-spin" width="12" height="12" viewBox="0 0 11 11" fill="none">
                   <circle cx="5.5" cy="5.5" r="4.5" stroke="white" strokeWidth="1.5" strokeDasharray="14 6"/>
                 </svg>
                 Saving…
