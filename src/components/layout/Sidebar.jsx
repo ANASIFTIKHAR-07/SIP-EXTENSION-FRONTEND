@@ -40,12 +40,9 @@ export function Sidebar({ activeTab, onTabChange }) {
     navigate(item.path);
   };
   return (
-    <aside
-      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
-      className="flex w-52 shrink-0 flex-col border-r border-stone-200 bg-white"
-    >
+    <aside className="flex w-56 shrink-0 flex-col border-r border-slate-200/60 bg-white/60 backdrop-blur-xl font-sans">
       {/* ── LOGO ─────────────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-2.5 px-4 h-14 border-b border-stone-100">
+      <div className="flex items-center gap-3 px-5 h-16 border-b border-slate-100/60">
         <div
           className="flex h-7 w-7 items-center justify-center rounded-md shrink-0"
           style={{ background: "linear-gradient(135deg, #16a34a, #15803d)" }}
@@ -56,44 +53,46 @@ export function Sidebar({ activeTab, onTabChange }) {
           </svg>
         </div>
         <div className="flex flex-col">
-          <span className="text-[13px] font-semibold text-stone-800 leading-none tracking-tight">
+          <span className="text-[14px] font-bold text-slate-900 leading-none tracking-tight">
             Miqas
           </span>
-          <span className="text-[10px] text-stone-400 leading-none mt-0.5 tracking-wide">
+          <span className="text-[10px] text-slate-500 leading-none mt-1 tracking-widest uppercase">
             Voice Infra
           </span>
         </div>
       </div>
 
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
-      <div className="flex-1 px-2 py-3">
-        <p className="px-2 mb-1 text-[10px] font-medium text-stone-400 uppercase tracking-widest">
+      <div className="flex-1 px-3 py-4">
+        <p className="px-2 mb-2 text-[10px] font-semibold text-slate-400 uppercase tracking-widest">
           Management
         </p>
-        <nav className="flex flex-col gap-0.5">
+        <nav className="flex flex-col gap-1">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.key}
               type="button"
               onClick={() => handleNavClick(item)}
-              className={`group w-full flex items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] font-medium transition-all duration-100 ${
+              className={`group w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-semibold transition-all duration-200 ${
                 activeTab === item.key
-                  ? "bg-stone-100 text-stone-900"
-                  : "text-stone-500 hover:bg-stone-50 hover:text-stone-800"
+                  ? "bg-emerald-50 text-emerald-800 shadow-sm shadow-emerald-100/50 ring-1 ring-emerald-500/20"
+                  : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
               <span
                 className={`transition-colors ${
                   activeTab === item.key
-                    ? "text-green-600"
-                    : "text-stone-400 group-hover:text-stone-500"
+                    ? "text-emerald-600"
+                    : "text-slate-400 group-hover:text-slate-500"
                 }`}
               >
                 {item.icon}
               </span>
               {item.label}
               {activeTab === item.key && (
-                <span className="ml-auto h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
+                <span className="ml-auto flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                </span>
               )}
             </button>
           ))}
@@ -101,13 +100,13 @@ export function Sidebar({ activeTab, onTabChange }) {
       </div>
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
-      <div className="px-3 py-3 border-t border-stone-100">
-        <div className="flex items-center gap-2 px-2 py-2">
+      <div className="px-4 py-4 border-t border-slate-100/60">
+        <div className="flex items-center gap-2.5 px-2">
           <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-50" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          <span className="text-[11px] text-stone-400 font-medium">All systems operational</span>
+          <span className="text-[11px] text-slate-500 font-medium tracking-wide">All systems operational</span>
         </div>
       </div>
     </aside>

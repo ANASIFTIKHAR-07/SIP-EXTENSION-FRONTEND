@@ -8,14 +8,13 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 
 function StatCard({ label, value, loading }) {
   return (
-    <div className="flex flex-col gap-1 rounded-xl border border-stone-200 bg-white px-5 py-4">
-      <span className="text-xs font-medium text-stone-400">{label}</span>
+    <div className="flex flex-col gap-1 rounded-2xl border border-slate-100/60 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-900/5 px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/40">
+      <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{label}</span>
       {loading ? (
-        <div className="h-7 w-10 animate-pulse rounded bg-stone-100 mt-0.5" />
+        <div className="h-8 w-12 animate-pulse rounded-md bg-slate-100 mt-1" />
       ) : (
         <span
-          className="text-2xl font-semibold text-stone-900 tabular-nums"
-          style={{ letterSpacing: "-0.03em" }}
+          className="text-3xl font-bold text-slate-900 tabular-nums tracking-tight mt-0.5"
         >
           {value}
         </span>
@@ -137,15 +136,11 @@ export function ExtensionsPage() {
           {/* Left: title + subtitle */}
           <div>
             <h1
-              className="text-[22px] font-semibold text-stone-900 leading-tight"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                letterSpacing: "-0.025em",
-              }}
+              className="text-2xl font-bold text-slate-900 tracking-tight"
             >
               Extensions
             </h1>
-            <p className="mt-0.5 text-sm text-stone-400">
+            <p className="mt-1 text-sm text-slate-500">
               {fetching
                 ? "Loading your extensions…"
                 : `${extensions.length} extension${extensions.length !== 1 ? "s" : ""} across ${uniqueDomains} domain${uniqueDomains !== 1 ? "s" : ""}`}
@@ -155,16 +150,13 @@ export function ExtensionsPage() {
           {/* Right: user + actions */}
           <div className="flex items-center gap-2.5">
             {/* User */}
-            <div className="hidden sm:flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 shadow-sm">
+            <div className="hidden sm:flex items-center gap-2.5 rounded-xl border border-slate-200/60 bg-white/80 backdrop-blur-md px-3 py-1.5 shadow-sm">
               <div
-                className="flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold text-white"
-                style={{
-                  background: "linear-gradient(135deg, #16a34a, #15803d)",
-                }}
+                className="flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold text-white bg-gradient-to-br from-emerald-400 to-teal-600 shadow-sm"
               >
                 {user?.fullName?.[0]?.toUpperCase() || "U"}
               </div>
-              <span className="text-xs font-medium text-stone-600 max-w-[120px] truncate">
+              <span className="text-xs font-semibold text-slate-700 max-w-[140px] truncate">
                 {user?.email}
               </span>
             </div>
@@ -173,7 +165,7 @@ export function ExtensionsPage() {
             <button
               type="button"
               onClick={logout}
-              className="rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-xs font-medium text-stone-500 shadow-sm transition hover:border-stone-300 hover:text-stone-700"
+              className="rounded-xl border border-slate-200/60 bg-white/80 backdrop-blur-md px-3 py-2.5 text-xs font-semibold text-slate-500 shadow-sm transition-all hover:border-slate-300 hover:text-slate-800 hover:bg-slate-50"
             >
               Sign out
             </button>
@@ -183,10 +175,7 @@ export function ExtensionsPage() {
               <button
                 type="button"
                 onClick={() => setIsAdding(true)}
-                style={{
-                  background: "linear-gradient(135deg, #16a34a, #15803d)",
-                }}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-emerald-500/20 transition-all hover:shadow-lg hover:opacity-95 active:scale-[0.98]"
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                   <path
@@ -225,7 +214,7 @@ export function ExtensionsPage() {
 
         {/* ── ERROR ───────────────────────────────────────────────────────── */}
         {error && (
-          <div className="flex items-center justify-between rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          <div className="flex items-center justify-between rounded-xl border border-red-100 bg-red-50/50 px-4 py-3 text-sm text-red-600 shadow-sm">
             <div className="flex items-center gap-2">
               <svg
                 width="14"
@@ -277,7 +266,7 @@ export function ExtensionsPage() {
 
         {/* ── TABLE ───────────────────────────────────────────────────────── */}
         {fetching ? (
-          <div className="flex items-center justify-center rounded-xl border border-stone-200 bg-white py-20">
+          <div className="flex items-center justify-center rounded-2xl border border-slate-100/60 bg-white py-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-900/5">
             <div className="flex flex-col items-center gap-3">
               <svg
                 className="animate-spin"
