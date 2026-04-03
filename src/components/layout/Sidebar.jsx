@@ -25,6 +25,20 @@ const NAV_ITEMS = [
       </svg>
     ),
   },
+  {
+    key: "cctv-products",
+    label: "CCTV Products",
+    path: "/cctv-products",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <rect x="2" y="3" width="11" height="9" rx="2" stroke="currentColor" strokeWidth="1.3"/>
+        <circle cx="7.5" cy="7.5" r="2" stroke="currentColor" strokeWidth="1.3"/>
+        <line x1="11.5" y1="3" x2="11.5" y2="12" stroke="currentColor" strokeWidth="1.3"/>
+        <line x1="4" y1="1" x2="4" y2="3" stroke="currentColor" strokeWidth="1.3"/>
+        <line x1="11" y1="1" x2="11" y2="3" stroke="currentColor" strokeWidth="1.3"/>
+      </svg>
+    ),
+  },
 ];
 
 export function Sidebar({ activeTab, onTabChange }) {
