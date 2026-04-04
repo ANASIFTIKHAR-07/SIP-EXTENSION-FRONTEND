@@ -26,9 +26,9 @@ const NAV_ITEMS = [
     ),
   },
   {
-    key: "cctv-products",
-    label: "CCTV Products",
-    path: "/cctv-products",
+    key: "dynamic-data",
+    label: "Dynamic Tabular Data",
+    path: "/dynamic-data",
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <rect x="2" y="3" width="11" height="9" rx="2" stroke="currentColor" strokeWidth="1.3"/>

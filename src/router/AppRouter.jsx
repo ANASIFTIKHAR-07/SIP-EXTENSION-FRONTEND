@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { ExtensionsPage } from "../pages/ExtensionsPage.jsx";
 // import { AIAgentsPage } from "../pages/AIAgentsPage.jsx";
 import { RateLimitingPage } from "../pages/RateLimitingPage.jsx";
-import { CctvProductsPage } from "../pages/CctvProductsPage.jsx";
+import { DynamicDataPage } from "../pages/DynamicDataPage.jsx";
 import { LoginPage } from "../pages/LoginPage.jsx";
 import { SignupPage } from "../pages/SignupPage.jsx";
 
@@ -27,7 +27,7 @@ export function AppRouter() {
       <Route path="/" element={user ? <ExtensionsPage /> : <Navigate to="/login" replace />} />
       {/* <Route path="/ai-agents" element={user ? <AIAgentsPage /> : <Navigate to="/login" replace />} /> */}
       <Route path="/rate-limiting" element={user ? <RateLimitingPage /> : <Navigate to="/login" replace />} />
-      <Route path="/cctv-products" element={user ? <CctvProductsPage /> : <Navigate to="/login" replace />} />
+      <Route path="/dynamic-data" element={user ? <DynamicDataPage /> : <Navigate to="/login" replace />} />
 
       {/* Public — redirect to / if already logged in */}
       <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" replace />} />

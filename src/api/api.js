@@ -1,5 +1,5 @@
 // const BASE_URL = "http://localhost:4000/api";
-const BASE_URL = "http://65.2.116.237:4000/api";
+const BASE_URL = "http://13.204.156.150:4000/api";
 
 const getHeaders = () => {
   const token = localStorage.getItem('accessToken');
